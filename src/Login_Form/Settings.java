@@ -26,6 +26,7 @@ public class Settings extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
+
         background = new ImageIcon(this.getClass().getResource("/Login_Form/theme/CATCHESS.jpg"));
         bgLabel = new JLabel(background);
         bgLabel.setBounds(0,0,600 ,300);
@@ -58,7 +59,7 @@ public class Settings extends JFrame {
         ThemeLabel.setFont(new Font("Papyrus", 1, 24));
         MusicToggleButton();
         ThemeToggleButton();
-        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
 
