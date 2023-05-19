@@ -1,0 +1,8 @@
+1,1,1
+h,h,h
+stalemate,stalemate,stalemate
+checkmate,checkmate,checkmate
+promotion,promotion,promotion
+casteling,casteling,casteling
+mohamed1,mohamed1,1234
+a,a,1
