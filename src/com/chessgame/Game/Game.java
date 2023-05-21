@@ -12,6 +12,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Login_Form.MainMenu;
 import Login_Form.Player;
 import Login_Form.SetUp;
 import com.chessgame.Board.Board;
@@ -79,6 +80,9 @@ public class Game {
 			player1_name = scan.next();
 			player2_name = scan.next();
 
+			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+			writer.write("");
+
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "an error occured" + e);
 		}
@@ -109,6 +113,15 @@ public class Game {
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "an error occured" + e);
 		}
+		SetUp.frame.dispose();
+		MainMenu mainMenu = new MainMenu();
+		mainMenu.setVisible(true);
+		Game.AllPieces =new ArrayList<>();
+		Game.board =new Board();
+		Game.allEnemyMove = new ArrayList<>();
+		Game.drag = false;
+		Game.player = true;
+		Game.gameOver = false;
 	}
 
 
@@ -187,8 +200,7 @@ public class Game {
 		generateEnemyMoves(board);
 		generatePlayersTurnMoves(board);
 		checkPlayersLegalMoves();
-		checkMate();
-//		timeOut();
+//		checkMate();
 		board.continueGame(player);
 		if(player && !gameOver){
 			Frame.label1.timer.start();
@@ -198,6 +210,7 @@ public class Game {
 			Frame.label1.timer.stop();
 			Frame.label2.timer.start();
 		}
+		checkMate();
 		drawDeadPieces();
 		DeadPieces();
 		if (Login.theme && board.deadPieces.size() != 0) {
@@ -497,7 +510,7 @@ modifications to the clone, we can ensure that the original game state is not af
 		if(Frame.label1.time == 0 || Frame.label2.time == 0){
 			saveHistory();
 			JOptionPane.showMessageDialog(null, "Time out " + (!player ? "white" : "black") + " wins");
-			System.exit(0);
+//			System.exit(0);
 		}
 	}
 

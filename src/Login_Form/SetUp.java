@@ -22,6 +22,7 @@ import javax.swing.*;
 public class SetUp extends javax.swing.JFrame {
     public static Player player1;
     public static Player player2;
+    public static Frame frame;
     String soundEffect = "MenuSoundEffect.wav";
     Music music = new Music();
     /**
@@ -223,7 +224,7 @@ public class SetUp extends javax.swing.JFrame {
         Frame.label1 = new LabelTimer(Player.minute,Player.second);
         Frame.label2 = new LabelTimer(Player.minute,Player.second);
         this.dispose();
-        Frame frame = new Frame();
+        frame = new Frame();
         if(Login.theme)
         {new PopupExample(0);}
     }//GEN-LAST:event_EnterGame_buttonActionPerformed

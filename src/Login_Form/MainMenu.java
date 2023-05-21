@@ -243,7 +243,7 @@ public class MainMenu extends javax.swing.JFrame {
         }
         this.dispose();
         music.PlaySoundEffect(soundEffect);
-        Frame frame = new Frame();
+        SetUp.frame = new Frame();
         if(Login.theme)
         { new PopupExample(0);}
         Game.drawDeadPieces();
