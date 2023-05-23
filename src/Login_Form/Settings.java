@@ -14,7 +14,7 @@ public class Settings extends JFrame {
 
     Music music = new Music();
     String soundEffect = "MenuSoundEffect.wav";
-    private String filepath= "Bones.wav";
+    public static String filepath= "Bones.wav";
     public Settings(){
 
         Image iconImage = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Login_Form/icons8-chess-64 (1).png"));

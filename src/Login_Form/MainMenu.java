@@ -261,7 +261,9 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitButtonMouseExited
 
     private void ExitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitButtonMouseClicked
-         music.PlaySoundEffect(soundEffect);
+        music.PlaySoundEffect(soundEffect);
+        Login.settings.music.StopMusic(Login.settings.filepath);
+        Login.theme =false;
         this.dispose();
         Login login = new Login();
         login.setVisible(true);
