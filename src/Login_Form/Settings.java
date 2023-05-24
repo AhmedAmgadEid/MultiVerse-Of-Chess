@@ -6,6 +6,7 @@ public class Settings extends JFrame {
      private  JButton back;
      private ImageIcon background;
      private JLabel bgLabel;
+     public boolean musicPlayeedForOneTimeAtLeast = false;
 
     SwitchButton musicSwitchButton;
     SwitchButton themeSwitchButton;
@@ -84,6 +85,7 @@ public class Settings extends JFrame {
             public void onSelected(boolean selected) {
                 if (selected) {
                     music.PlayMusic(filepath);
+                    musicPlayeedForOneTimeAtLeast = true;
                 } else {
                     music.StopMusic(filepath);
                 }
