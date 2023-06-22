@@ -13,6 +13,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 /**
@@ -145,7 +147,15 @@ public class SetUp extends javax.swing.JFrame {
         EnterGame_button.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         EnterGame_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EnterGame_buttonActionPerformed(evt);
+                try {
+                    EnterGame_buttonActionPerformed(evt);
+                } catch (UnsupportedAudioFileException e) {
+                    throw new RuntimeException(e);
+                } catch (LineUnavailableException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
         getContentPane().add(EnterGame_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 290, 340, 90));
@@ -199,7 +209,7 @@ public class SetUp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Player2Name_textfieldActionPerformed
 
-    private void EnterGame_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterGame_buttonActionPerformed
+    private void EnterGame_buttonActionPerformed(java.awt.event.ActionEvent evt) throws UnsupportedAudioFileException, LineUnavailableException, IOException {//GEN-FIRST:event_EnterGame_buttonActionPerformed
                 player1 = new Player(Player1Name_textfield.getText(), minutes_textfield.getText(), seconds_textfield.getText());
         player2 = new Player(Player2Name_textfield.getText(), minutes_textfield.getText(), seconds_textfield.getText());
 

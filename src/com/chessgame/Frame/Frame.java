@@ -3,8 +3,11 @@ import Login_Form.*;
 import com.chessgame.Board.Board;
 import com.chessgame.Game.Game;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 //import java.io.Serial;
 
@@ -26,7 +29,7 @@ public class Frame extends JFrame {
 	private JButton BackButton;
 	Music music = new Music();
 	String soundEffect = "MenuSoundEffect.wav";
-	public Frame() {
+	public Frame() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
 
 		Image iconImage = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Login_Form/icons8-chess-64 (1).png"));
 		setIconImage(iconImage);

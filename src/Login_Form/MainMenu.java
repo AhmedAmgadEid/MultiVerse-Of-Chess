@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -125,7 +127,15 @@ public class MainMenu extends javax.swing.JFrame {
         ContinueButton.setText("jLabel2");
         ContinueButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ContinueButtonMouseClicked(evt);
+                try {
+                    ContinueButtonMouseClicked(evt);
+                } catch (UnsupportedAudioFileException e) {
+                    throw new RuntimeException(e);
+                } catch (LineUnavailableException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ContinueButtonMouseEntered(evt);
@@ -200,7 +210,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_ContinueButtonMouseExited
 
-    private void ContinueButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContinueButtonMouseClicked
+    private void ContinueButtonMouseClicked(java.awt.event.MouseEvent evt) throws UnsupportedAudioFileException, LineUnavailableException, IOException {//GEN-FIRST:event_ContinueButtonMouseClicked
        SetUp.player1 = new Player();
         SetUp.player2 = new Player();
         String s = null;

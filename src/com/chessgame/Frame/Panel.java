@@ -25,7 +25,7 @@ public class Panel extends JPanel {
 	int ti,tj;
 	public static int xx, yy;
 	Point point = this.getLocation();
-	Panel(){
+	Panel() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
 		this.setFocusable(true);
 		this.addMouseListener(new Listener());
 		//MouseListener handles events related to mouse clicks and button presses

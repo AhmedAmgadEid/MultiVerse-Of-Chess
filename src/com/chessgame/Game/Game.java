@@ -38,7 +38,7 @@ public class Game {
 	public static boolean gameOver = false;
 
 
-	public Game() {
+	public Game() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
 		new PieceImages(); 		// ???????????????????
 		String game = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 		// load game to continue
@@ -159,11 +159,25 @@ public class Game {
 
 
 
-	public void start() {
+	public void start() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
 		fillPieces();
 		generatePlayersTurnMoves(board);
 		generateEnemyMoves(board);
 		checkPlayersLegalMoves();
+		if (board.pieces[0][6] != null) {
+			if (board.pieces[0][6].makeMove(0,5,board)) {
+				System.out.println("hhhhhhh");
+				tryToPromote(board.pieces[0][5]);
+				changeSide();
+			}
+		}
+		if (board.pieces[0][1] != null) {
+			if (board.pieces[0][1].makeMove(0,2,board)) {
+				System.out.println("hhhhhhh");
+				tryToPromote(board.pieces[0][2]);
+				changeSide();
+			}
+		}
 	}
 
 	public void draw(Graphics g, int x, int y, JPanel panel) {
@@ -497,12 +511,14 @@ modifications to the clone, we can ensure that the original game state is not af
 
 	//responsible for plotting a dead pieces
 	public static void drawDeadPieces(){
-		Frame.bDead.removeAll();               // to remove all the black dead pieces
-		Frame.wDead.removeAll();               // to remove all the white dead pieces
-		Frame.wDead.repaint();
-		Frame.bDead.repaint();                 // repaint the panel to update the display
-		for (Piece p: board.deadPieces){
-			if(p != null) p.drawDead(p.isWhite ? Frame.wDead : Frame.bDead);
+		if(Frame.bDead != null && Frame.wDead != null) {
+			Frame.bDead.removeAll();               // to remove all the black dead pieces
+			Frame.wDead.removeAll();               // to remove all the white dead pieces
+			Frame.wDead.repaint();
+			Frame.bDead.repaint();                 // repaint the panel to update the display
+			for (Piece p : board.deadPieces) {
+				if (p != null) p.drawDead(p.isWhite ? Frame.wDead : Frame.bDead);
+			}
 		}
 	}
 
